@@ -1,0 +1,8 @@
+version: '3'
+
+services:
+  nas-veritas-dapp-server:
+    image: kun368/nas-veritas:master
+    restart: always
+    ports:
+      - "8110:80"
