@@ -7,6 +7,7 @@ import Home from './pages/Home';
 import List from './pages/List';
 import Create from './pages/Create';
 import Help from './pages/Help';
+import Detail from './pages/Detail';
 import NotFound from './pages/NotFound';
 
 const routerConfig = [
@@ -29,6 +30,11 @@ const routerConfig = [
     path: '/Help',
     layout: AsideLayout,
     component: Help,
+  },
+  {
+    path: '/Detail/:id',
+    layout: AsideLayout,
+    component: Detail,
   },
   {
     path: '*',

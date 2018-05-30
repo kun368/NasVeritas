@@ -50,27 +50,27 @@ export default class AblityItems extends Component {
     return (
       <div className="hy-ability" style={style.hyAbilityStyles}>
         <div className="hy-ability-item" style={style.hyAbilityItemStyle}>
-          <img 
-            src="https://gw.alipayobjects.com/zos/rmsportal/aWimbMGxabytxrRqcnEU.svg" 
+          <img
+            src="https://gw.alipayobjects.com/zos/rmsportal/aWimbMGxabytxrRqcnEU.svg"
             style={style.hyAbilityItemImgStyle}/>
-          <h3 style={style.hyAbilityItemTitleStyle}>蚂蚁能力输出</h3>
-          <p style={style.hyAbilityItemSubtitleStyle}>支付、实名、信用、理财、大数据</p>
+          <h3 style={style.hyAbilityItemTitleStyle}>技术强劲</h3>
+          <p style={style.hyAbilityItemSubtitleStyle}>基于优秀的星云区块链智能合约</p>
         </div>
-      
+
         <div className="hy-ability-item" style={style.hyAbilityItemStyle}>
-          <img 
-            src="https://gw.alipayobjects.com/zos/rmsportal/neNAdNbBxUbWpbUQIsJA.svg" 
+          <img
+            src="https://gw.alipayobjects.com/zos/rmsportal/neNAdNbBxUbWpbUQIsJA.svg"
             style={style.hyAbilityItemImgStyle}/>
-          <h3 style={style.hyAbilityItemTitleStyle}>官方政策扶持</h3>
-          <p style={style.hyAbilityItemSubtitleStyle}>物料、返佣、品牌支持、运营收益</p>
+          <h3 style={style.hyAbilityItemTitleStyle}>无中介</h3>
+          <p style={style.hyAbilityItemSubtitleStyle}>无中心组织 公平公正公开</p>
         </div>
-      
+
         <div className="hy-ability-item" style={style.hyAbilityItemStyle}>
-          <img 
-            src="https://gw.alipayobjects.com/zos/rmsportal/SsStefBxcUWayMyktAwz.svg" 
+          <img
+            src="https://gw.alipayobjects.com/zos/rmsportal/SsStefBxcUWayMyktAwz.svg"
             style={style.hyAbilityItemImgStyle}/>
-          <h3 style={style.hyAbilityItemTitleStyle}>第三方资源整合</h3>
-          <p style={style.hyAbilityItemSubtitleStyle}>门禁停车、智能家居、生活服务</p>
+          <h3 style={style.hyAbilityItemTitleStyle}>只求真相</h3>
+          <p style={style.hyAbilityItemSubtitleStyle}>让真相永远留存在区块链上</p>
         </div>
       </div>
     );

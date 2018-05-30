@@ -53,7 +53,15 @@ class Feed {
 
 
 const NasVeritas = function () {
-  LocalContractStorage.defineMapProperty(this, 'topics');
+  LocalContractStorage.defineMapProperty(this, 'topicMap', {
+    parse: function (text) {
+      return new Topic(text);
+    },
+    stringify: function (o) {
+      return o.toString();
+    }
+  });
+  LocalContractStorage.defineMapProperty(this, 'topicList');
   LocalContractStorage.defineMapProperty(this, 'userOwnTopics');
   LocalContractStorage.defineMapProperty(this, 'topicFeeds');
   LocalContractStorage.defineMapProperty(this, 'userOwnFeeds');
@@ -87,7 +95,8 @@ NasVeritas.prototype = {
     item.time = Blockchain.transaction.timestamp * 1000;
     item.title = title;
     item.content = content;
-    this._push("topics", "arr", item);
+    this.topicMap.put(item.txHash, item);
+    this._push("topicList", "arr", item);
     this._push("userOwnTopics", item.from, item);
     return item;
   },
@@ -99,17 +108,24 @@ NasVeritas.prototype = {
     item.time = Blockchain.transaction.timestamp * 1000;
     item.topicHash = topicHash;
     item.attitude = attitude;
-    this._push("topics", item.topicHash, item);
+    this._push("topicFeeds", item.topicHash, item);
     this._push("userOwnFeeds", item.from, item);
     return item;
   },
 
   queryAllTopics: function () {
-    return this._get("topics", "arr");
+    return this._get("topicList", "arr");
   },
 
   queryUserTopics: function (from) {
-    return this._get("userOwnTopics", )
+    return this._get("userOwnTopics", from);
+  },
+
+  queryOneTopic: function (topicHash) {
+    return {
+      topic: this.topicMap.get(topicHash),
+      feeds: this.queryTopicFeed(topicHash),
+    }
   },
 
   queryTopicFeed: function (topicHash) {

@@ -1,44 +1,15 @@
 import React, { Component } from 'react';
 import IceContainer from '@icedesign/container';
-import { Pagination } from '@icedesign/base';
+import { Pagination, Feedback } from '@icedesign/base';
+import NebUtils from '../../../../util/NebUtils.js'
+import {Base64} from 'js-base64';
 
-const dataSource = [
-  {
-    title: '关于淘宝网存储设备商品发布规范的公告',
-    tag: 'up',
-    href: '',
-    time: '2017-11-29',
-  },
-  {
-    title: '加强淘宝网电动四轮车类目准入的公告',
-    tag: 'new',
-    href: '',
-    time: '2017-10-29',
-  },
-  {
-    title: '淘宝网VR头盔商品发布规范的公告',
-    tag: 'hot',
-    href: '',
-    time: '2017-03-11',
-  },
-  {
-    title: '加强淘宝网农药类目准入的公告',
-    tag: '',
-    href: '',
-    time: '2017-02-16',
-  },
-  {
-    title: '淘宝网2017年春节发货时间及交易超时调整公告',
-    tag: '',
-    href: '',
-    time: '2017-11-23',
-  },
-];
+const Toast = Feedback.toast;
 
 const dict = {
   up: '置顶',
-  hot: '新',
-  new: '热',
+  hot: '热',
+  new: '新',
 };
 
 export default class SystemNoticeList extends Component {
@@ -47,21 +18,47 @@ export default class SystemNoticeList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      current: 2,
+      dataSource: [],
     };
   }
 
-  handleChange = (current) => {
-    console.log('current:', current);
-    this.setState({ current });
-  };
+  transformDataSource(resp) {
+    resp = resp.reverse();
+    for (let i = 0; i < 3 && i < resp.length; ++i) {
+      resp[i].tag = 'new';
+    }
+    return resp.map(it => {
+      return {
+        title: Base64.decode(it.title),
+        tag: it.tag,
+        href: `/#/Detail/${it.txHash}`,
+        time: new Date(it.time).toLocaleString(),
+      }
+    })
+  }
+
+  componentDidMount() {
+    NebUtils.userCallAxios(
+      "queryAllTopics",
+      `[]`,
+      resp => {
+        Toast.success("获取真相/谣言数据成功");
+        this.setState({
+          dataSource: this.transformDataSource(resp),
+        })
+      },
+    );
+  }
 
   render() {
+    const dataSource = this.state.dataSource;
+    console.log(dataSource);
+
     return (
       <div className="system-notice-list">
         <IceContainer>
           <div className="notice-list-content">
-            <h2 style={styles.title}>系统公告</h2>
+            <h2 style={styles.title}>真相/谣言看板</h2>
             <ul style={styles.noticeList}>
               {dataSource.map((item, index) => {
                 return (
@@ -81,13 +78,6 @@ export default class SystemNoticeList extends Component {
                 );
               })}
             </ul>
-          </div>
-          <div style={styles.paginationWrap}>
-            <Pagination
-              shape="arrow-only"
-              current={this.state.current}
-              onChange={this.handleChange}
-            />
           </div>
         </IceContainer>
       </div>
