@@ -4,6 +4,9 @@
 
 import AsideLayout from './layouts/AsideLayout';
 import Home from './pages/Home';
+import List from './pages/List';
+import Create from './pages/Create';
+import Help from './pages/Help';
 import NotFound from './pages/NotFound';
 
 const routerConfig = [
@@ -11,6 +14,21 @@ const routerConfig = [
     path: '/',
     layout: AsideLayout,
     component: Home,
+  },
+  {
+    path: '/List',
+    layout: AsideLayout,
+    component: List,
+  },
+  {
+    path: '/Create',
+    layout: AsideLayout,
+    component: Create,
+  },
+  {
+    path: '/Help',
+    layout: AsideLayout,
+    component: Help,
   },
   {
     path: '*',

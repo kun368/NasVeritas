@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
-
-import ReviewDataChart from './components/ReviewDataChart';
-import ReviewDetailInfo from './components/ReviewDetailInfo';
-import ReviewOverview from './components/ReviewOverview';
-import ReviewRequestTable from './components/ReviewRequestTable';
+import IntroBanner from "./components/IntroBanner/IntroBanner";
+import AblityItems from "./components/AblityItems/AblityItems";
 
 export default class Home extends Component {
   static displayName = 'Home';
@@ -16,10 +13,8 @@ export default class Home extends Component {
   render() {
     return (
       <div className="home-page">
-        <ReviewOverview />
-        <ReviewDetailInfo />
-        <ReviewRequestTable />
-        <ReviewDataChart />
+        <IntroBanner/>
+        <AblityItems/>
       </div>
     );
   }

@@ -3,23 +3,32 @@
 
 const headerMenuConfig = [
   {
-    name: '首页',
-    path: '/',
-    icon: 'home',
-  },
-  {
-    name: '反馈',
-    path: 'https://github.com/alibaba/ice',
+    name: '帮助&反馈',
+    path: 'https://github.com/kun368/NasVeritas/issues/new',
     external: true,
     newWindow: true,
     icon: 'message',
   },
   {
-    name: '帮助',
-    path: 'https://alibaba.github.io/ice',
+    name: '联系开发者',
+    path: 'http://www.zzkun.com',
     external: true,
     newWindow: true,
-    icon: 'bangzhu',
+    icon: 'yonghu',
+  },
+  {
+    name: '下载Chrome扩展',
+    path: 'https://github.com/ChengOrangeJu/WebExtensionWallet',
+    external: true,
+    newWindow: true,
+    icon: 'key',
+  },
+  {
+    name: '下载手机钱包',
+    path: 'https://nano.nebulas.io/index_cn.html',
+    external: true,
+    newWindow: true,
+    icon: 'phone',
   },
 ];
 
@@ -27,49 +36,24 @@ const headerMenuConfig = [
 
 const asideMenuConfig = [
   {
-    name: 'Dashboard',
+    name: '首页',
     path: '/',
     icon: 'home',
-    children: [
-      {
-        name: '平台概况',
-        path: '/',
-      },
-      {
-        name: '数据监控',
-        path: '/monitor',
-      },
-    ],
   },
   {
-    name: '客户信息',
-    path: '/message',
-    icon: 'yonghu',
-    children: [
-      {
-        name: '评论信息',
-        path: '/message/comment',
-      },
-      {
-        name: '客户反馈',
-        path: '/message/feedback',
-      },
-    ],
+    name: '真相/谣言市场',
+    path: '/List',
+    icon: 'shop',
   },
   {
-    name: '通用设置',
-    path: '/setting',
-    icon: 'shezhi',
-    children: [
-      {
-        name: '基础设置',
-        path: '/setting/basic',
-      },
-      {
-        name: '菜单设置',
-        path: '/setting/navigation',
-      },
-    ],
+    name: '爆料真相/辟谣',
+    path: '/Create',
+    icon: 'quote2',
+  },
+  {
+    name: '使用帮助',
+    path: '/Help',
+    icon: 'creative',
   },
 ];
 
